@@ -1,4 +1,4 @@
-const Options = ({ ratingData, updateFeedback, handleReset }) => {
+const Options = ({ ratingData, updateFeedback, reset }) => {
   const btnNames = Object.keys(ratingData);
 
   return (
@@ -8,7 +8,7 @@ const Options = ({ ratingData, updateFeedback, handleReset }) => {
           {btnName}
         </button>
       ))}
-      <button onClick={handleReset}>Reset </button>
+      <button onClick={reset(btnNames)}>Reset </button>
     </div>
   );
 };

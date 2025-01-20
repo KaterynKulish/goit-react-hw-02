@@ -19,11 +19,15 @@ const App = () => {
     0
   );
 
-  const handleReset = ({ ratingData, btnName }) => {
-    console.log(ratingData);
-    console.log(btnName);
+  const handleReset = () => {
+    // console.log(ratingData);
+    // console.log(btnName);
 
-    // setRatingData([btnName]:0);
+    setRatingData({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
   };
 
   return (
