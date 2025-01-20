@@ -1,0 +1,14 @@
+.btn {
+  width: 90px;
+  height: 40px;
+  border: 1px solid black;
+  border-radius: 4px;
+  text-transform: capitalize;
+  margin-bottom: 10px;
+}
+
+.btnBox {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

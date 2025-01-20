@@ -1,13 +1,15 @@
-const Feedback = ({ ratingData, totalFeedback }) => {
+import s from './Feedback.module.css';
+const Feedback = ({ ratingData, totalFeedback, positiveFeedback }) => {
   const btnNames = Object.keys(ratingData);
   return (
     <ul>
       {btnNames.map(btnName => (
-        <li key={btnName}>
+        <li className={s.itemFeedback} key={btnName}>
           {btnName}: {ratingData[btnName]}
         </li>
-      ))}{' '}
-      <li>Total: {totalFeedback}</li>
+      ))}
+      <li className={s.itemFeedback}>Total: {totalFeedback}</li>
+      <li className={s.itemFeedback}>Positive: {positiveFeedback}</li>
     </ul>
   );
 };

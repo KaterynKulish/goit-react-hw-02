@@ -1,13 +1,21 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Options from './components/Options/Options';
 import Feedback from './components/Feedback/Feedback';
 
 const App = () => {
-  const [ratingData, setRatingData] = useState({
-    good: 0,
-    neutral: 0,
-    bad: 0,
-  });
+  const [ratingData, setRatingData] = useState(
+    () =>
+      JSON.parse(localStorage.getItem('ratingData')) ?? {
+        good: 0,
+        neutral: 0,
+        bad: 0,
+      }
+  );
+
+  useEffect(
+    () => localStorage.setItem('ratingData', JSON.stringify(ratingData)),
+    [ratingData]
+  );
 
   const updateFeedback = btnName => {
     console.log(btnName);
@@ -19,10 +27,10 @@ const App = () => {
     0
   );
 
-  const handleReset = () => {
-    // console.log(ratingData);
-    // console.log(btnName);
+  const positiveFeedback =
+    Math.round((ratingData.good / totalFeedback) * 100) + '%';
 
+  const handleReset = () => {
     setRatingData({
       good: 0,
       neutral: 0,
@@ -41,8 +49,17 @@ const App = () => {
         ratingData={ratingData}
         updateFeedback={updateFeedback}
         reset={handleReset}
+        totalFeedback={totalFeedback}
       />
-      <Feedback ratingData={ratingData} totalFeedback={totalFeedback} />
+      {totalFeedback !== 0 ? (
+        <Feedback
+          ratingData={ratingData}
+          totalFeedback={totalFeedback}
+          positiveFeedback={positiveFeedback}
+        />
+      ) : (
+        <p>No feedback yet</p>
+      )}
     </div>
   );
 };

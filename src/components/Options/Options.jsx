@@ -1,14 +1,24 @@
-const Options = ({ ratingData, updateFeedback, reset }) => {
+import s from './Options.module.css';
+const Options = ({ ratingData, updateFeedback, reset, totalFeedback }) => {
   const btnNames = Object.keys(ratingData);
 
   return (
-    <div>
+    <div className={s.btnBox}>
       {btnNames.map(btnName => (
-        <button onClick={() => updateFeedback(btnName)} key={btnName}>
+        <button
+          type="button"
+          className={s.btn}
+          onClick={() => updateFeedback(btnName)}
+          key={btnName}
+        >
           {btnName}
         </button>
       ))}
-      <button onClick={reset(btnNames)}>Reset </button>
+      {totalFeedback !== 0 && (
+        <button type="button" className={s.btn} onClick={reset}>
+          Reset{' '}
+        </button>
+      )}
     </div>
   );
 };
