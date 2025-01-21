@@ -1,4 +1,5 @@
 import s from './Options.module.css';
+
 const Options = ({ ratingData, updateFeedback, reset, totalFeedback }) => {
   const btnNames = Object.keys(ratingData);
 
