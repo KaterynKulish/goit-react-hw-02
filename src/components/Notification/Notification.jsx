@@ -1,4 +1,4 @@
 const Notification = () => {
-  <p>No feedback yet</p>;
+  return <p>No feedback yet</p>;
 };
 export default Notification;
